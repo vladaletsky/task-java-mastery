@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/employeedb?currentSchema=employee
+  jpa:
+    show-sql: true

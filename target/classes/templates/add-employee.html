@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+    <p></p>
+    <form action="#" th:action="@{/add-employee}" th:object="${employee}" method="post">
+        <label for="name">First Name</label>
+        <input type="text" th:field="*{firstName}" id="name" placeholder="Name">
+        <label for="lastName">LastName</label>
+        <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+        <label for="department_id">Department Id</label>
+        <input type="text" th:field="*{departmentId}" id="department_id" placeholder="Department Id">
+        <label for="job_title">Job Title</label>
+        <input type="text" th:field="*{jobTitle}" id="job_title" placeholder="Job Title">
+        <label for="gender">Gender</label>
+        <select id="gender" class="custom-select col-1" th:field="*{gender}">
+            <option th:each="gender : ${T(com.mastery.java.task.entity.Gender).values()}"
+                    th:value="${gender}" th:text="${gender.name}">
+            </option>
+        </select>
+        <input class="btn btn-outline-dark" type="submit" value="Add Employee">
+    </form>
+</div>
+</body>
+</html>
