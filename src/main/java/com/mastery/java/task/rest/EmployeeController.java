@@ -29,7 +29,7 @@ public class EmployeeController {
         employeeService.saveEmployee(employee);
     }
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public void updateEmployee(@PathVariable("id") int id, @RequestBody Employee employee) {
         employeeService.updateEmployee(id, employee);
     }
