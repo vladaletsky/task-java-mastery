@@ -32,20 +32,20 @@ public class EmployeePageController {
         return "redirect:/";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable("id") int id) {
         employeeService.deleteEmployee(id);
         return "redirect:/";
     }
 
-    @PutMapping("/edit-employee-page/{id}")
+    @GetMapping("/edit-employee-page/{id}")
     public String editUserPage(@PathVariable("id") int id, Model model) {
         Employee employee = employeeService.findById(id);
         model.addAttribute("employee", employee);
         return "edit-employee";
     }
 
-    @PutMapping("/edit-employee/{id}")
+    @PostMapping("/edit-employee/{id}")
     public String editUser(@PathVariable("id") int id, @ModelAttribute Employee employee) {
         employeeService.updateEmployee(id, employee);
         return "redirect:/";
