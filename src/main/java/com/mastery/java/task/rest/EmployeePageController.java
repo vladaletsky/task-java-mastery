@@ -50,4 +50,9 @@ public class EmployeePageController {
         employeeService.updateEmployee(id, employee);
         return "redirect:/";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }

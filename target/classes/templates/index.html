@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Employees</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+<form class="col-1 ml-auto my-2" th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 <div th:switch="${employee}">
     <div th:case="*">
         <h2>Employees</h2>
@@ -30,7 +33,11 @@
                 <td th:text="*{departmentId}"></td>
                 <td th:text="*{jobTitle}"></td>
                 <td th:text="*{gender.name}"></td>
-                <td><a th:href="@{/edit-employee-page/{id}(id=*{id})}">Edit</a></td>
+                <td>
+                    <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                        <a th:href="@{/edit-employee-page/{id}(id=*{id})}">Edit</a>
+                    </div>
+                </td>
                 <td><a th:href="@{/delete/{id}(id=*{id})}">Delete</a></td>
             </tr>
             </tbody>
